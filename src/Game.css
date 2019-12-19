@@ -1,3 +1,9 @@
+body {
+  background-color: #de0079;
+  padding: 0;
+  margin: 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .logo {
     animation: logo-spin infinite 1.25s linear;

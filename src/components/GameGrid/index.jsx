@@ -32,39 +32,43 @@ const GameGrid = () => {
     cat11,
     cat12
   ]);
-  const [clickedCats, setClickedCats] = useState([]);
+  const [clickedTiles, setClickedTiles] = useState([]);
   const [score, setScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
 
   useEffect(() => {
-    if (score > maxScore) {
-      setMaxScore(score);
-    }
     document.title = `Score: ${score} | Max: ${maxScore}`;
   }, [score, maxScore]);
 
-  const newGame = () => {
-    setScore(0);
-    setClickedCats([]);
-    setTiles(shuffleTiles(tiles));
-  };
-
   const tileClick = (tile) => {
-    if (clickedCats.includes(tile)) {
-      alert(`You lost! Your score was: ${score}`);
-      return newGame();
-    }
-    clickedCats.push(tile);
-    setScore(score + 1);
     setTiles(shuffleTiles(tiles));
+    if (clickedTiles.includes(tile)) {
+      alert(`You lost! Your score was: ${score}`);
+      setScore(0);
+      setClickedTiles([]);
+      return;
+    }
+    setClickedTiles([...clickedTiles, tile]);
+    const newScore = score + 1;
+    setScore(newScore);
+    if (newScore > maxScore) {
+      setMaxScore(newScore);
+    }
+    if (newScore === tiles.length) {
+      alert("Congratulations, you won!");
+      setScore(0);
+      setMaxScore(0);
+      setClickedTiles([]);
+    }
   };
 
   return (
     <>
       <ScoreBar score={score} maxScore={maxScore} />
-      <div className="d-flex flex-wrap justify-content-around tile-container">
+      <div className="d-flex flex-wrap justify-content-center tile-container">
         {tiles.map((tile) => (
           <Image
+            key={tile}
             className="tile"
             src={tile}
             onClick={() => tileClick(tile)}
