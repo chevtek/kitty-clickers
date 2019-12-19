@@ -1,0 +1,14 @@
+.tile {
+  width: 24vw;
+  margin: 0.25vw 0 0.25vw 0;
+  cursor: pointer;
+}
+
+.tile:hover {
+  opacity: 0.5;
+}
+
+.tile-container {
+  padding: 0.5vw;
+  box-sizing: border-box;
+}

@@ -1,0 +1,10 @@
+.score-bar {
+  background-color: #de0079;
+  padding: 25px;
+  color: #fff;
+}
+
+.score-bar .logo {
+  height: 10vh;
+  display: inline-block;
+}

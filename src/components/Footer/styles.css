@@ -1,0 +1,17 @@
+footer {
+  color: #fff;
+  background-color: #de0079;
+  height: 15vh;
+  width: 100vw;
+  text-align: center;
+}
+
+footer a {
+  color: #f6e6eb;
+  font-weight: bold;
+}
+
+footer a:hover,
+footer a:visited {
+  color: #f6e6eb;
+}
